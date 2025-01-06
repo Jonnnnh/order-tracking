@@ -5,20 +5,18 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "orders")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
+@Table(name = "orders")
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String product;
     private Integer quantity;
     private BigDecimal price;
-
 }

@@ -1,7 +1,8 @@
 version: '3.8'
+
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:16
     container_name: postgres
     environment:
       POSTGRES_USER: postgres
@@ -9,3 +10,20 @@ services:
       POSTGRES_DB: orders_db
     ports:
       - "5432:5432"
+
+  order-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: order-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/orders_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: pass
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TOPIC_ORDERS: orders
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - kafka

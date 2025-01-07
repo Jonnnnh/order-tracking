@@ -5,21 +5,17 @@ import com.example.orderservice.orderservice.entity.OrderEntity;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.ReportingPolicy;
 
 
-@Mapper(componentModel = "spring")
+//@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface OrderMapper {
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "product", source = "product")
-    @Mapping(target = "quantity", source = "quantity")
-    @Mapping(target = "price", source = "price")
+
     OrderDto toDto(OrderEntity entity);
 
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "product", source = "product")
-    @Mapping(target = "quantity", source = "quantity")
-    @Mapping(target = "price", source = "price")
     OrderEntity toEntity(OrderDto dto);
 }
+
 
 

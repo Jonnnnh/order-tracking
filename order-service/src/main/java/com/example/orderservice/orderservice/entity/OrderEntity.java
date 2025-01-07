@@ -16,7 +16,14 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String product;
+
+    @Column(nullable = false)
     private Integer quantity;
+
+    @Column(nullable = false)
     private BigDecimal price;
 }
+

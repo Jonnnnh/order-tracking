@@ -4,11 +4,11 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-@Setter
 @Getter
-@Builder
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class OrderDto {
     private Long id;
     private String product;

@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+
 
 @Service
 @AllArgsConstructor
@@ -19,6 +21,7 @@ public class OrderService {
 
     @Transactional
     public OrderDto createOrder(OrderDto orderDto) {
+        validateOrderDto(orderDto);
         OrderEntity orderEntity = orderMapper.toEntity(orderDto);
         orderEntity = orderRepository.save(orderEntity);
         OrderDto createdOrder = orderMapper.toDto(orderEntity);
@@ -27,4 +30,18 @@ public class OrderService {
         return createdOrder;
     }
 
+    private void validateOrderDto(OrderDto orderDto) {
+        if (orderDto == null) {
+            throw new IllegalArgumentException("OrderDto must not be null");
+        }
+        if (orderDto.getProduct() == null || orderDto.getProduct().isEmpty()) {
+            throw new IllegalArgumentException("Product name must not be null or empty");
+        }
+        if (orderDto.getQuantity() == null || orderDto.getQuantity() <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than 0");
+        }
+        if (orderDto.getPrice() == null || orderDto.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Price must be greater than 0");
+        }
+    }
 }

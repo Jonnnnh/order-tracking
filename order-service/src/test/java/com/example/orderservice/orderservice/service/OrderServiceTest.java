@@ -1,11 +1,10 @@
-package com.example.orderservice.orderservice;
+package com.example.orderservice.orderservice.service;
 
 import com.example.orderservice.orderservice.dto.OrderDto;
 import com.example.orderservice.orderservice.entity.OrderEntity;
 import com.example.orderservice.orderservice.kafka.OrderProducer;
 import com.example.orderservice.orderservice.mapper.OrderMapper;
 import com.example.orderservice.orderservice.repository.OrderRepository;
-import com.example.orderservice.orderservice.service.OrderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

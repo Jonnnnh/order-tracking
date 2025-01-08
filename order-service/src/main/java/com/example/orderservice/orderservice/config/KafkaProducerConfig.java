@@ -41,6 +41,7 @@ public class KafkaProducerConfig {
 
     @Bean
     public KafkaTemplate<String, OrderDto> kafkaTemplate() {
+        log.info("KafkaTemplate initialized with bootstrap servers: {}", bootstrapServers);
         return new KafkaTemplate<>(producerFactory());
     }
 }

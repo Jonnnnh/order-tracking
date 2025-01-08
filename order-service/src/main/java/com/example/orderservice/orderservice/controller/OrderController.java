@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
@@ -19,6 +20,15 @@ public class OrderController {
     public ResponseEntity<OrderDto> createOrder(@Valid @RequestBody OrderDto orderDto) {
         OrderDto createdOrder = orderService.createOrder(orderDto);
         return ResponseEntity.ok(createdOrder);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<OrderDto>> getOrders(
+            @RequestParam int page,
+            @RequestParam int size
+    ) {
+        List<OrderDto> orders = orderService.getOrders(page, size);
+        return ResponseEntity.ok(orders);
     }
 }
 

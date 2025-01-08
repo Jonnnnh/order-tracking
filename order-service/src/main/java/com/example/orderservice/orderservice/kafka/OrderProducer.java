@@ -17,7 +17,13 @@ public class OrderProducer {
 
     public void sendOrderCreatedEvent(OrderDto orderDto) {
         String ordersTopic = kafkaTopicConfig.getOrders();
-        System.out.println("Orders topic: " + ordersTopic);
-        messageProducer.sendMessage(ordersTopic, orderDto);
+        log.info("Preparing to send message to topic: {}", ordersTopic);
+
+        try {
+            messageProducer.sendMessage(ordersTopic, orderDto);
+            log.info("Message sent successfully to topic: {}", ordersTopic);
+        } catch (Exception e) {
+            log.error("Error sending message to topic {}: {}", ordersTopic, e.getMessage(), e);
+        }
     }
 }

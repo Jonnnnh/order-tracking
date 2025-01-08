@@ -6,10 +6,13 @@ import com.example.orderservice.orderservice.kafka.OrderProducer;
 import com.example.orderservice.orderservice.mapper.OrderMapper;
 import com.example.orderservice.orderservice.repository.OrderRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
 @Service
@@ -44,4 +47,14 @@ public class OrderService {
             throw new IllegalArgumentException("Price must be greater than 0");
         }
     }
+
+    @Transactional(readOnly = true)
+    public List<OrderDto> getOrders(int page, int size) {
+        Page<OrderEntity> ordersPage = orderRepository.findAll(PageRequest.of(page, size));
+        return ordersPage.getContent()
+                .stream()
+                .map(orderMapper::toDto)
+                .toList();
+    }
+
 }

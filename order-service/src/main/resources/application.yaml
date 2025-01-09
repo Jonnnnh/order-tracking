@@ -2,6 +2,10 @@ server:
   port: 8080
 
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic:
+      orders: orders
   datasource:
     url: jdbc:postgresql://localhost:5432/orders_db
     username: postgres
@@ -13,12 +17,3 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
-kafka:
-  bootstrap-servers: localhost:9092
-  topic:
-    orders: orders
-
-logging:
-  level:
-    org.flywaydb: DEBUG

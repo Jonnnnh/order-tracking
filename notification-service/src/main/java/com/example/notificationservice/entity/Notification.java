@@ -3,8 +3,9 @@ package com.example.notificationservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+import java.math.BigDecimal;
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -20,7 +21,8 @@ public class Notification {
 
     private Integer quantity;
 
-    private Double price;
+    private BigDecimal price;
 
+    @Column(nullable = true)
     private String status;
 }

@@ -4,6 +4,7 @@ import com.example.notificationservice.dto.OrderCreatedEvent;
 import com.example.notificationservice.service.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
@@ -13,7 +14,7 @@ public class NotificationSagaServiceImpl implements NotificationSagaService {
     private final NotificationService notificationService;
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void handleOrderCreatedEvent(OrderCreatedEvent event) {
         try {
             log.info("Handling order created event: {}", event);

@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface NotificationMapper {
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "status", constant = "CREATED")
     Notification toNotification(OrderCreatedEvent event);
     OrderCreatedEvent toOrderCreatedEvent(Notification notification);

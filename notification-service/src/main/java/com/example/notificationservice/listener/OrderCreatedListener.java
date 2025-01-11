@@ -14,7 +14,7 @@ public class OrderCreatedListener {
 
     private final NotificationSagaService notificationSagaService;
 
-    @KafkaListener(topics = "orders", groupId = "mapper-group")
+    @KafkaListener(topics = "orders", groupId = "notification-group")
     public void handleOrderCreated(OrderCreatedEvent event) {
         log.info("Order creation event received: {}", event);
         try {

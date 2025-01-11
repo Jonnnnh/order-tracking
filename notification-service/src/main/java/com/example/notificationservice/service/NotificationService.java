@@ -18,9 +18,10 @@ public class NotificationService {
 
 
     public void processNotification(OrderCreatedEvent event) {
+        log.info("Processing notification for Order ID: {}", event.getId());
         Notification notification = notificationMapper.toNotification(event);
-        Notification savedNotification = notificationRepository.save(notification);
-        log.info("Notification saved successfully: {}", savedNotification);
+        notificationRepository.save(notification);
+        log.info("Notification processed and saved: {}", notification);
     }
 
     public void deleteNotification(Long notificationId) {

@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class NotificationMapperTest {
@@ -27,7 +28,7 @@ public class NotificationMapperTest {
 
         Notification notification = notificationMapper.toNotification(event);
 
-        assertEquals(event.getId(), notification.getId());
+        assertNull(notification.getId());
         assertEquals(event.getProduct(), notification.getProduct());
         assertEquals(event.getQuantity(), notification.getQuantity());
         assertEquals(event.getPrice(), notification.getPrice());

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "kafka.topic")
+@ConfigurationProperties(prefix = "spring.kafka.topic")
 public class KafkaTopicConfig {
     private String orders;
 }

@@ -1,9 +1,9 @@
 # Order Tracking System
 
 ![Java](https://img.shields.io/badge/Java-17-orange.svg)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.1-brightgreen.svg)
 ![Docker](https://img.shields.io/badge/Docker-20.10.7-blue.svg)
-![Kafka](https://img.shields.io/badge/Apache%20Kafka-3.x-lightgrey.svg)
+![Kafka](https://img.shields.io/badge/Apache%20Kafka-3.3.1-lightgrey.svg)
 
 ## Description
 
@@ -34,11 +34,11 @@ Interaction between services is carried out via **Apache Kafka**, providing reli
 ## Technologies
 
 - **Language:** Java 17
-- **Framework:** Spring Boot 3.x
+- **Framework:** Spring Boot 3.4.1
 - **Messaging:** Apache Kafka
 - **Database:** PostgreSQL
 - **Containerization:** Docker, Docker Compose
-- **Tools:** Spring Data JPA, Spring for Apache Kafka, Flyway, Lombok, MapStruct
+- **Tools:** Spring Data JPA, Spring for Apache Kafka, Flyway, Lombok, MapStruct, Swagger (Springdoc OpenAPI)
 
 ## Starting the Project
 
@@ -79,6 +79,10 @@ docker exec -it kafka kafka-topics --create \
 --partitions 1 \
 --replication-factor 1
 ```
+## API Documentation (Swagger UI)
+
+Swagger is available for testing API endpoints at:
+ - **Swagger UI:** http://localhost:8080/swagger-ui.html
 
 ## Using the API
 
